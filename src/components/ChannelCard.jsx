@@ -15,17 +15,15 @@ sx={{ borderRadius: "50%", height:"180px", width:"180px", mb: 2, border: "1px so
 <Typography variant="h6">
 {channelDetail?.snippet?.title}
 <CheckCircleIcon sx={{ fontSize: 18, color:"gray", ml: "7px"}}/>
-{channelDetail?.statistics?.subscriberCount && (
-  <Typography>
-    {parseInt(channelDetail?.statistics?.subscriberCount).toLocaleString()} Subscribers
-  </Typography>
-)}
-
 </Typography>
-</CardContent>
-</Link>
+        {channelDetail?.statistics?.subscriberCount && (
+          <Typography sx={{ fontSize: '15px', fontWeight: 500, color: 'gray' }}>
+            {parseInt(channelDetail?.statistics?.subscriberCount).toLocaleString('en-US')} Subscribers
+          </Typography>
+        )}
+      </CardContent>
+    </Link>
   </Box>
-  )
-
+);
 
 export default ChannelCard
