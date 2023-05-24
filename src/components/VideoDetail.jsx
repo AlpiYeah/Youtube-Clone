@@ -3,7 +3,7 @@ import { Link, useParams} from "react-router-dom"
 import ReactPlayer from 'react-player'
 import { Typography, Box, Stack } from '@mui/material'
 import { CheckCircle } from '@mui/icons-material'
-import { Videos } from "./"
+import { Loader, Videos } from "./"
 import { fetchFromAPI } from '../utils/fetchFromAPI'
 import React from 'react'
 
@@ -17,7 +17,7 @@ useEffect(() => {
       .then((data) => setVideos(data.items))
 }, [id])
 
-if (!videoDetail?.snippet) return "Loading..."
+if (!videoDetail?.snippet) return <Loader/>
 
   return (
 <Box minHeight="95vh">
