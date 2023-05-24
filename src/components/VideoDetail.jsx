@@ -15,6 +15,8 @@ useEffect(() => {
   fetchFromAPI(`videos?part=snippet,statistics&id=${id}`).then((data) => setVideoDetail(data.items[0]))
 }, [id])
 
+if (!videoDetail?.snippet) return "Loading..."
+
   return (
 <Box minHeight="95vh">
   <Stack direction={{ xs: "column", md: "row"}}>
@@ -24,7 +26,17 @@ useEffect(() => {
         <Typography color="#fff" variant='h5' fontWeight="bold" p={2} >
           {videoDetail.snippet.title}
         </Typography>
-      </Box>
+        <Stack direction="row" justifyContent="space-between" sx={{ color:"#fff"}} py={2} px={2}>
+<Link to={`/channel/${videoDetail.snippet.channelId}`}>
+  <Typography variant={{ sm:"subtitle1", md:"h6"}} color="#fff">
+    {videoDetail.snippet.channelTitle}
+    <CheckCircle sx={{fontSize:"12px", color:"gray", ml:"5px"}}/>
+  </Typography>
+
+</Link>
+
+        </Stack>
+      </Box>s
 
     </Box>
 
