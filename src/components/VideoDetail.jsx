@@ -34,9 +34,18 @@ if (!videoDetail?.snippet) return "Loading..."
   </Typography>
 
 </Link>
+<Stack direction="row" gap="20px" alignItems="center">
+  <Typography variant='body1' sx={{ opacity: 0.7}}>
+    {parseInt(videoDetail.statistics.viewCount).toLocaleString()} Views
 
+  </Typography>
+  <Typography variant='body1' sx={{ opacity: 0.7}}>
+    {parseInt(videoDetail.statistics.likeCount).toLocaleString()} Likes
+
+  </Typography>
+</Stack>
         </Stack>
-      </Box>s
+      </Box>
 
     </Box>
 
