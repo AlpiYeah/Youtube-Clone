@@ -1,9 +1,14 @@
 import { Link } from "react-router-dom"
 import { Typography, Card, CardContent, CardMedia } from "@mui/material"
 import { CheckCircle } from "@mui/icons-material"
+import { motion } from "framer-motion"
 
 const VideoCard = ({video: { id: {videoId}, snippet}}) => {
   return (
+
+    <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }} >
+
+
     <Card sx={{ width: {xs:"100%", sm:"358px",md:"320px", }, boxShadow:"none", borderRadius:0}}>
         <Link to={`/video/${videoId}`}>
         <CardMedia 
@@ -26,6 +31,9 @@ const VideoCard = ({video: { id: {videoId}, snippet}}) => {
     </Link>
 </CardContent>
     </Card>
+
+    
+    </motion.div>
   )
 }
 
