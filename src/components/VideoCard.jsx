@@ -11,14 +11,15 @@ const VideoCard = ({video: { id: {videoId}, snippet}}) => {
 
   const [channelDetail, setChannelDetail] = useState(null)
 
+  
   useEffect(() => {
     const fetchResults = async () => {
-      const data = await fetchFromAPI(`channels?id=${snippet?.channelId}`);
+      const data = await fetchFromAPI(`channels?part=snippet&id=${snippet?.channelId}`);
 
       setChannelDetail(data?.items[0]); };
 
       fetchResults();
-    },);
+    });
   
 
   return (
