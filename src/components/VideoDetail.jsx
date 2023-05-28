@@ -6,6 +6,7 @@ import { CheckCircle } from '@mui/icons-material'
 import { Loader, Videos } from "./"
 import { fetchFromAPI } from '../utils/fetchFromAPI'
 import React from 'react'
+import { Button } from '@mui/base'
 
 const VideoDetail = () => {
 const [videos, setVideos] = useState(null)
@@ -36,6 +37,15 @@ if (!videoDetail?.snippet) return <Loader/>
                 </Typography>
               </Link>
               <Stack direction="row" gap="20px" alignItems="center">
+                <Link to={`https://www.youtubdle.com/watch?v=${id}`}>
+              <Button
+  onClick={() => {
+
+  }}
+>
+  Click me
+</Button>
+</Link>
                 <Typography variant="body1" sx={{ opacity: 0.7 }}>
                   {parseInt(videoDetail.statistics.viewCount).toLocaleString()} views
                 </Typography>
