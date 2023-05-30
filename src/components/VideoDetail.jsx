@@ -6,7 +6,8 @@ import { CheckCircle } from '@mui/icons-material'
 import { Loader, Videos } from "./"
 import { fetchFromAPI } from '../utils/fetchFromAPI'
 import React from 'react'
-import { Button } from '@mui/base'
+import { motion } from "framer-motion"
+import DownloadIcon from '@mui/icons-material/Download';
 
 const VideoDetail = () => {
 const [videos, setVideos] = useState(null)
@@ -31,20 +32,18 @@ if (!videoDetail?.snippet) return <Loader/>
             </Typography>
             <Stack direction="row" justifyContent="space-between" sx={{ color: "#fff" }} py={1} px={2} >
               <Link to={`/channel/${videoDetail.snippet.channelId}`}>
+              <motion.div whileHover={{ scale: 2.5 }} whileTap={{ scale: 0.8 }} >
                 <Typography variant={{ sm: "subtitle1", md: 'h6' }}  color="#fff" >
                   {videoDetail.snippet.channelTitle}
                   <CheckCircle sx={{ fontSize: "12px", color: "gray", ml: "5px" }} />
                 </Typography>
+                </motion.div>
               </Link>
               <Stack direction="row" gap="20px" alignItems="center">
                 <Link to={`https://www.youtubdle.com/watch?v=${id}`}>
-              <Button
-  onClick={() => {
-
-  }}
->
-  Click me
-</Button>
+                <motion.div whileHover={{ scale: 2.5 }} whileTap={{ scale: 0.8 }} >
+              <DownloadIcon fontSize="medium" sx={{color:"#e3e3e3"}}/>
+              </motion.div>
 </Link>
                 <Typography variant="body1" sx={{ opacity: 0.7 }}>
                   {parseInt(videoDetail.statistics.viewCount).toLocaleString()} views
