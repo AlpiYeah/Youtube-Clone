@@ -1,24 +1,24 @@
-import React, { useState, useEffect } from "react"
-import { Box } from "@mui/material"
-import { useParams } from "react-router-dom"
-import { Videos, ChannelCard} from "./"
-import { fetchFromAPI } from "../utils/fetchFromAPI"
+import React, { useState, useEffect } from "react";
+import { Box } from "@mui/material";
+import { useParams } from "react-router-dom";
+import { Videos, ChannelCard } from "./";
+import { fetchFromAPI } from "../utils/fetchFromAPI";
 
-const ChannelDetail= () => {
+const ChannelDetail = () => {
+  const [channelDetail, setChannelDetail] = useState(null);
+  const [videos, setVideos] = useState([]);
 
-  const [channelDetail, setChannelDetail] = useState(null)
-  const [videos, setVideos] = useState([])
-  
-
-  const { id } = useParams()
+  const { id } = useParams();
 
   useEffect(() => {
     const fetchResults = async () => {
-      const data = await fetchFromAPI(`channels?part=snippet,statistics&id=${id}`);
-
+      const data = await fetchFromAPI(
+        `channels?part=snippet,statistics&id=${id}`
+      );
       setChannelDetail(data?.items[0]);
-      const videosData = await fetchFromAPI(`search?channelId=${id}&part=snippet%2Cid&order=date`);
-
+      const videosData = await fetchFromAPI(
+        `search?channelId=${id}&part=snippet%2Cid&order=date`
+      );
 
       setVideos(videosData?.items);
     };
@@ -28,23 +28,21 @@ const ChannelDetail= () => {
 
   return (
     <Box minHeight="95vh">
-      <Box>
-    <img 
-       
-        alt={channelDetail?.snippet?.title}
-        src={channelDetail?.brandingSettings?.image?.bannerExternalUrl?.url}
-    />
-</Box>
-<ChannelCard channelDetail={channelDetail} />
+      <Box >
+        <img
+          class="banner"
+          alt={channelDetail?.snippet?.title}
+          src={channelDetail?.brandingSettings?.image?.bannerExternalUrl}
+        />
+      </Box>
+      <ChannelCard channelDetail={channelDetail} />
 
-      
       <Box p={2} display="flex">
-      <Box sx={{ mr: { sm: '100px' } }}/>
+        <Box sx={{ mr: { sm: "100px" } }} />
         <Videos videos={videos} />
       </Box>
     </Box>
   );
 };
 
-
-export default ChannelDetail
+export default ChannelDetail;

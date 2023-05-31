@@ -52,8 +52,11 @@ if (!videoDetail?.snippet) return <Loader/>
                   {parseInt(videoDetail.statistics.likeCount).toLocaleString()} likes
                 </Typography>
               </Stack>
+              
             </Stack>
-    
+            <Typography sx={{color:"white", paddingX:"20px"}}>
+                  {videoDetail?.snippet.description}
+                </Typography>
           </Box>
           <CommentSection />
         </Box>

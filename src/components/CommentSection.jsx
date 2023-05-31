@@ -26,7 +26,7 @@ const CommentSection = () => {
         <Stack direction="row">
             <CardContent>
                 <Typography>
-                    {snippet?.topLevelComment?.snippet?.authorDisplayName}
+                    {comments?.snippet?.topLevelComment?.snippet?.authorDisplayName}
                 </Typography>
             </CardContent>
 
