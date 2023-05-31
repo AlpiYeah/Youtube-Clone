@@ -3,7 +3,7 @@ import { Link, useParams} from "react-router-dom"
 import ReactPlayer from 'react-player'
 import { Typography, Box, Stack } from '@mui/material'
 import { CheckCircle } from '@mui/icons-material'
-import { Loader, Videos } from "./"
+import { CommentSection, Loader, Videos } from "./"
 import { fetchFromAPI } from '../utils/fetchFromAPI'
 import React from 'react'
 import { motion } from "framer-motion"
@@ -32,7 +32,7 @@ if (!videoDetail?.snippet) return <Loader/>
             </Typography>
             <Stack direction="row" justifyContent="space-between" sx={{ color: "#fff" }} py={1} px={2} >
               <Link to={`/channel/${videoDetail.snippet.channelId}`}>
-              <motion.div whileHover={{ scale: 2.5 }} whileTap={{ scale: 0.8 }} >
+              <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }} >
                 <Typography variant={{ sm: "subtitle1", md: 'h6' }}  color="#fff" >
                   {videoDetail.snippet.channelTitle}
                   <CheckCircle sx={{ fontSize: "12px", color: "gray", ml: "5px" }} />
@@ -41,7 +41,7 @@ if (!videoDetail?.snippet) return <Loader/>
               </Link>
               <Stack direction="row" gap="20px" alignItems="center">
                 <Link to={`https://www.youtubdle.com/watch?v=${id}`}>
-                <motion.div whileHover={{ scale: 2.5 }} whileTap={{ scale: 0.8 }} >
+                <motion.div whileHover={{ scale: 2 }} whileTap={{ scale: 0.8 }} >
               <DownloadIcon fontSize="medium" sx={{color:"#e3e3e3"}}/>
               </motion.div>
 </Link>
@@ -53,11 +53,14 @@ if (!videoDetail?.snippet) return <Loader/>
                 </Typography>
               </Stack>
             </Stack>
+    
           </Box>
+          <CommentSection />
         </Box>
         <Box px={2} py={{ md: 1, xs: 5 }} justifyContent="center" alignItems="center" >
           <Videos videos={videos} direction="column" />
         </Box>
+
       </Stack>
     </Box>
  )

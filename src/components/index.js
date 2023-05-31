@@ -9,3 +9,5 @@ export { default as Videos } from "./Videos";
 export { default as VideoCard } from "./VideoCard";
 export { default as ChannelCard } from "./ChannelCard";
 export { default as Loader } from "./Loader";
+export { default as CommentSection } from "./CommentSection";
+export { default as CommentCard } from "./CommentCard";

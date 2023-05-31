@@ -8,6 +8,7 @@ import {
   ChannelDetail,
   VideoDetail,
 } from "./components";
+
 const App = () => (
   <BrowserRouter>
     <Box sx={{ backgroundColor: "black" }}>
