@@ -1,43 +1,72 @@
-import { Box, CardContent, Stack, Card, Typography } from '@mui/material'
-import React from 'react'
-import { fetchFromAPI } from '../utils/fetchFromAPI'
-import Loader from './Loader'
-import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import {
+  Box,
+  CardContent,
+  Stack,
+  Card,
+  Typography,
+  Avatar,
+  CardMedia,
+  Divider,
+} from "@mui/material";
+import React from "react";
+import { fetchFromAPI } from "../utils/fetchFromAPI";
+import Loader from "./Loader";
+import { useState, useEffect } from "react";
 
+const CommentSection = ({ id }) => {
+  const [comments, setComments] = useState([]);
 
-const CommentSection = () => {
+  useEffect(() => {
+    fetchFromAPI(
+      `commentThreads?part=snippet&videoId=${id}&maxResults=1`
+    ).then((data) => setComments(data.items));
+  }, [comments]);
 
-  const {id} = useParams()
-    const [comments, setComments] = useState([])
-
-    useEffect(() => {
-        fetchFromAPI(`commentThreads?part=snippet&videoId=${id}&maxResults=25`).then((data)=>setComments(data.items))
-          }, [comments])
-
-          if(!comments?.length) return <Loader />;
+  if (!comments?.length) return <Loader />;
 
   return (
     <Stack direction="column">
-      {comments.map((item,idx) => (
+      {comments.map((comments, idx) => (
         <Box key={idx}>
-            {item.id.id && 
-             <Card>
-        <Stack direction="row">
-            <CardContent>
-                <Typography>
-                    {comments?.snippet?.topLevelComment?.snippet?.authorDisplayName}
-                </Typography>
-            </CardContent>
+          {comments.id && (
+            <Card sx={{ backgroundColor: "primary.main" }}>
+              <Stack direction="row">
+                <CardContent sx={{ display: "block", textAlign: "center" }}>
+                  <Typography
+                    variant="h6"
+                    fontWeight="bold"
+                    color="#FFF"
+                  >
+                    {
+                      comments?.snippet?.topLevelComment?.snippet
+                        ?.authorDisplayName
+                    }
+                  </Typography>
+                  <Typography variant="subtitle2" color="#FFF">
+                    {comments?.snippet?.topLevelComment?.snippet?.textOriginal}
+                  </Typography>
+                </CardContent>
+                <Divider color="#1e1e1e">
 
-        </Stack>
-    </Card>}
+                </Divider>
 
+                <Avatar
+                  alt={
+                    comments?.snippet?.topLevelComment?.snippet
+                      ?.authorDisplayName
+                  }
+                  src={
+                    comments?.snippet?.topLevelComment?.snippet
+                      ?.authorProfileImageUrl
+                  }
+                />
+              </Stack>
+            </Card>
+          )}
         </Box>
       ))}
-
     </Stack>
-  )
-}
+  );
+};
 
-export default CommentSection
+export default CommentSection;

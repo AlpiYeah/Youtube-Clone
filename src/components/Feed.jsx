@@ -30,7 +30,7 @@ const Feed = () => {
         <Typography
           className="copyright"
           variant="body2"
-          sx={{ mt: 1.5, color: "#fff" }}
+          sx={{ mt: 1.5, color: "neutral" }}
         >
           Copyright 2023 Brasco Media
         </Typography>
