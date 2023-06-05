@@ -50,7 +50,7 @@ const VideoDetail = () => {
             <Stack
               direction="row"
               justifyContent="space-between"
-              sx={{ color: "#fff" }}
+              sx={{ color: "#fff"}}
               py={1}
               px={2}
             >

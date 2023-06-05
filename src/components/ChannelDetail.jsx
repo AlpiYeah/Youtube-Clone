@@ -35,7 +35,7 @@ const ChannelDetail = () => {
           src={channelDetail?.brandingSettings?.image?.bannerExternalUrl}
         />
       </Box>
-      <ChannelCard channelDetail={channelDetail} />
+      <ChannelCard channelDetail={channelDetail} marginTop="-60px" marginLeft="30px" whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }} />
 
       <Box p={2} display="flex">
         <Box sx={{ mr: { sm: "100px" } }} />

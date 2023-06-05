@@ -1,9 +1,15 @@
 import React from "react";
-import { Box, CardContent, CardMedia, Divider, Stack, Typography } from "@mui/material";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import {
+  Box,
+  CardContent,
+  CardMedia,
+  Divider,
+  Stack,
+  Typography,
+} from "@mui/material";
 import { Link } from "react-router-dom";
 
-const ChannelCard = ({ channelDetail }) => (
+const ChannelCard = ({ channelDetail, marginTop, marginLeft }) => (
   <Box
     sx={{
       boxShadow: "none",
@@ -14,6 +20,7 @@ const ChannelCard = ({ channelDetail }) => (
       width: { xs: "356px", md: "320px" },
       height: "326px",
       margin: "auto",
+      marginTop,
     }}
   >
     <Link to={`/channel/${channelDetail?.id?.channelId}`}>
@@ -24,9 +31,11 @@ const ChannelCard = ({ channelDetail }) => (
           justifyContent: "center",
           textAlign: "center",
           color: "#fff",
+         
         }}
       >
         <CardMedia
+        
           image={channelDetail?.snippet?.thumbnails?.high?.url}
           alt={channelDetail?.snippet?.title}
           sx={{
@@ -34,33 +43,53 @@ const ChannelCard = ({ channelDetail }) => (
             height: "180px",
             width: "180px",
             mb: 2,
-            border: "1px solid #e3e3e3",
+            border: "8px solid #000",
+            
+            marginLeft,
           }}
         />
-        <Typography variant="h6">
+        <Typography variant="h5" fontWeight="500"  >
           {channelDetail?.snippet?.title}
-          <CheckCircleIcon sx={{ fontSize: 18, color: "gray", ml: "7px" }} />
-        </Typography >
+         
+        </Typography>
         {channelDetail?.statistics?.subscriberCount && (
-          <Stack direction="row">
-          <Typography sx={{ fontSize: "15px", fontWeight: 500, color: "gray" }}>
-            {parseInt(
-              channelDetail?.statistics?.subscriberCount
-            ).toLocaleString("en-US")}{" "}
-            Subscribers
-          </Typography>
-          <Divider/>
-          <Typography sx={{ fontSize: "15px", fontWeight: 500, color: "gray" }}>
-            {parseInt(
-              channelDetail?.statistics?.subscriberCount
-            ).toLocaleString("en-US")}{" "}
-            Uploads
-          </Typography>
+          
+          <Stack direction="row" marginTop="10px" >
+            <Stack direction="column" p={2} flex={'auto'} >
+            <Typography
+              sx={{ fontSize: "20px", fontWeight: 400, color: "white" }}
+            >
+             {parseInt(
+                channelDetail?.statistics?.subscriberCount
+              ).toLocaleString("en-US")}{" "}
+</Typography>
+<Typography
+              sx={{ fontSize: "15px", fontWeight: 500, color: "gray" }}
+            >
+              Subscribers
+            </Typography>
+            </Stack>
+            <Divider orientation="vertical" color="#1e1e1e" variant="middle" flexItem sx={{marginX:"10px"}}/>
+            <Stack direction="column" p={2} flex={'auto'}>
+            <Typography
+              sx={{ fontSize: "20px", fontWeight: 400, color: "white" }}
+            >
+             {parseInt(
+                channelDetail?.statistics?.videoCount
+              ).toLocaleString("en-US")}{" "}
+</Typography>
+<Typography
+              sx={{ fontSize: "15px", fontWeight: 500, color: "gray" }}
+            >
+              Uploads
+            </Typography>
+            </Stack>
           </Stack>
         )}
       </CardContent>
     </Link>
   </Box>
+
 );
 
 export default ChannelCard;
