@@ -10,7 +10,7 @@ function Navbar ({ isChecked, handleToggle,theme, value }) {
   
   return (
   
-  <Stack direction="row" alignItems="center" p={2} sx={{position:"sticky", background:"primary", top:0, justifyContent: "space-between"}}>
+  <Stack direction="row" alignItems="center" p={2} sx={{position:"sticky", background:"primary", top:0, justifyContent: "space-between", zIndex:"10", backgroundColor:"primary.main"}}>
     
 <Link to="/" style={{display:"flex", alignItems: "center", paddingLeft:"10px", }}>
   <img src={require('../public/pelilogo.png')} alt="logo" height={60}/>

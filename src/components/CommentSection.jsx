@@ -28,7 +28,7 @@ const CommentSection = ({ id }) => {
 
   return (
     <Stack direction="column">
-      {comments.map((comments, idx) => (
+      {comments.filter((item,index)=> index < 20).map((comments, idx) => (
         <Box key={idx}>
           {comments.id && (
             <Card

@@ -37,7 +37,7 @@ const VideoDetail = () => {
   return (
     <Box minHeight="95vh">
       <Stack direction={{ xs: "column", md: "row" }}>
-        <Box flex={1}>
+        <Box flex={1} sx={{overflowY:"scroll"}}>
           <Box sx={{ width: "100%", position: "sticky", top: "86px" }}>
             <ReactPlayer
               url={`https://www.youtube.com/watch?v=${id}`}
@@ -148,7 +148,10 @@ const VideoDetail = () => {
           justifyContent="center"
           alignItems="center"
         >
+          <div>
+
           <Videos videos={videos} direction="column" />
+          </div>
         </Box>
       </Stack>
     </Box>
