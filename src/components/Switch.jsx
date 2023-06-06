@@ -7,22 +7,20 @@ import darkTheme from "./themes/darkTheme";
 function Switch({ onColor }) {
   const [value, setValue] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
-  const [theme, setTheme] = useState("lightTheme")
+  const [theme, setTheme] = useState("lightTheme");
   const handleToggle = (event) => {
-    setValue(!value)
-    setIsChecked(!isChecked)
+    setValue(!value);
+    setIsChecked(!isChecked);
     if (!value) {
-      setTheme("darkTheme")
+      setTheme("darkTheme");
     } else {
-      setTheme("lightTheme")
+      setTheme("lightTheme");
     }
-    
-  }
-  
+  };
 
   return (
-    <Box >
-        <input
+    <Box>
+      <input
         checked={isChecked}
         onChange={handleToggle}
         className="react-switch-checkbox"
@@ -36,10 +34,9 @@ function Switch({ onColor }) {
       >
         <span className={`react-switch-button`} />
       </label>
-      <p style={{color:"white"}}>{theme}</p>
+      <p style={{ color: "white" }}>{theme}</p>
     </Box>
   );
-};
+}
 
-
-export default Switch
+export default Switch;

@@ -89,26 +89,12 @@ a {
 
 .banner{
   width: 100%; 
-  /* height: auto; */
-  max-height: 320px; 
+  
+  max-height: 350px; 
   object-fit: cover;
 object-position: 50% 50%; 
 
 }
-
-.banner-div {
-  height: 320px; /* It doesn't have to be '%'. It can also use 'px'. */
-  width: 100%;
-  margin: 0 auto;
-  padding: 0;
-
-  /* background-image: url(../img/exampleImage.jpg); */
-  background-position: center;
-  background-repeat: repeat;
-  background-size: 60%;
-
-}
-
 .react-switch-checkbox {
   height: 0;
   width: 0;

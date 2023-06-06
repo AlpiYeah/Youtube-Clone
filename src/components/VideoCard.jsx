@@ -18,7 +18,6 @@ const VideoCard = ({
           borderRadius: "2%",
           padding: "10px",
           backgroundColor: "#1e1e1",
-
         }}
       >
         <Link to={`/video/${videoId}`}>

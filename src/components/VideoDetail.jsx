@@ -37,8 +37,8 @@ const VideoDetail = () => {
   return (
     <Box minHeight="95vh">
       <Stack direction={{ xs: "column", md: "row" }}>
-        <Box flex={1} sx={{overflowY:"scroll"}}>
-          <Box sx={{ width: "100%", position: "sticky", top: "86px" }}>
+        <Box flex={1}>
+          <Box sx={{ width: "100%", top: "86px" }}>
             <ReactPlayer
               url={`https://www.youtube.com/watch?v=${id}`}
               className="react-player"
@@ -50,7 +50,7 @@ const VideoDetail = () => {
             <Stack
               direction="row"
               justifyContent="space-between"
-              sx={{ color: "#fff"}}
+              sx={{ color: "#fff" }}
               py={1}
               px={2}
             >
@@ -60,11 +60,11 @@ const VideoDetail = () => {
                   whileTap={{ scale: 0.8 }}
                 >
                   <Typography variant="subtitle1" color="#fff">
+                    {videoDetail.snippet.channelTitle}
                     <PersonIcon
                       fontSize="medium"
-                      sx={{ marginRight: "8px", marginBottom: "-4px" }}
+                      sx={{ marginLeft: "3px", marginBottom: "-6px" }}
                     />
-                    {videoDetail.snippet.channelTitle}
                   </Typography>
                 </motion.div>
               </Link>
@@ -94,19 +94,17 @@ const VideoDetail = () => {
               </Stack>
             </Stack>
             <Accordion
-            disableGutters
+              disableGutters
               elevation={0}
               sx={{
                 backgroundColor: "#000",
                 borderRadius: 2,
-                '&:before': {
-                  display: 'none',
-              }
+                "&:before": {
+                  display: "none",
+                },
               }}
             >
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-              >
+              <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                 Details
               </AccordionSummary>
               <AccordionDetails>
@@ -149,8 +147,7 @@ const VideoDetail = () => {
           alignItems="center"
         >
           <div>
-
-          <Videos videos={videos} direction="column" />
+            <Videos videos={videos} direction="column" />
           </div>
         </Box>
       </Stack>
