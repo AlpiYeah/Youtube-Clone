@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import darkTheme from "./components/themes/darkTheme";
-import lightTheme from "./components/themes/lightTheme";
 
-import { ThemeProvider, Typography } from "@mui/material";
+import { ThemeProvider } from "@mui/material";
 import { Box } from "@mui/material";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import {

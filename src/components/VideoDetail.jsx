@@ -18,6 +18,9 @@ import PersonIcon from "@mui/icons-material/Person";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import { ThumbUp } from "@mui/icons-material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import dayjs from "dayjs";
+var relativeTime = require('dayjs/plugin/relativeTime')
+dayjs.extend(relativeTime)
 
 const VideoDetail = () => {
   const [videos, setVideos] = useState(null);
@@ -51,7 +54,7 @@ const VideoDetail = () => {
               direction="row"
               justifyContent="space-between"
               sx={{ color: "#fff" }}
-              py={1}
+              
               px={2}
             >
               <Link to={`/channel/${videoDetail.snippet.channelId}`}>
@@ -70,13 +73,13 @@ const VideoDetail = () => {
               </Link>
 
               <Stack direction="row" gap="20px" alignItems="center">
-                <Typography variant="body1" sx={{ opacity: 0.7 }}>
+                <Typography variant="body1">
                   {parseInt(videoDetail.statistics.viewCount).toLocaleString()}{" "}
                   <RemoveRedEyeIcon
                     sx={{ marginLeft: "5px", marginBottom: "-6px" }}
                   />
                 </Typography>
-                <Typography variant="body1" sx={{ opacity: 0.7 }}>
+                <Typography variant="body1" >
                   {parseInt(videoDetail.statistics.likeCount).toLocaleString()}{" "}
                   <ThumbUp sx={{ marginLeft: "5px", marginBottom: "-6px" }} />
                 </Typography>
@@ -102,6 +105,7 @@ const VideoDetail = () => {
                 "&:before": {
                   display: "none",
                 },
+                marginY:"20px"
               }}
             >
               <AccordionSummary expandIcon={<ExpandMoreIcon />}>
@@ -116,7 +120,7 @@ const VideoDetail = () => {
                     fontWeight: "bold",
                   }}
                 >
-                  Uploaded {videoDetail.snippet.publishedAt}{" "}
+                  Uploaded • {dayjs().to(dayjs(videoDetail.snippet.publishedAt))}
                 </Typography>
                 <Typography sx={{ color: "white" }}>
                   {videoDetail?.snippet.description}
@@ -143,9 +147,21 @@ const VideoDetail = () => {
         <Box
           px={2}
           py={{ md: 1, xs: 5 }}
-          justifyContent="center"
-          alignItems="center"
+          marginTop="-13px"
+          
         >
+          <Typography
+          variant="h4"
+          fontWeight="bold"
+          align="center"
+          mb={2}
+          sx={{
+            color: "white",
+            marginBottom:"10px"
+          }}
+        >
+          Suggested <span style={{ color: "#F31503" }}>Videos</span>
+        </Typography>
           <div>
             <Videos videos={videos} direction="column" />
           </div>
