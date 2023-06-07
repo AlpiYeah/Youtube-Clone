@@ -42,7 +42,7 @@ function Navbar() {
         to="/"
         style={{ display: "flex", alignItems: "center", paddingLeft: "10px" }}
       >
-        <img src={require("../public/pelilogo.png")} alt="logo" height={60} />
+        <img src={require("../public/pelilogo.png")} alt="logo" height={60} width="auto" />
         <Box sx={{ display: { xs: "none", md: "block" } }}>
           <img
             src={require("../public/logotextgrt.png")}

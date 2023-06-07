@@ -22,6 +22,8 @@ const VideoCard = ({
       >
         <Link to={`/video/${videoId}`}>
           <CardMedia
+            component="img"
+            loading="lazy"
             image={snippet?.thumbnails?.high?.url}
             alt={snippet?.title}
             sx={{ width: "320px", height: 180 }}

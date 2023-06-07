@@ -55,6 +55,7 @@ const CommentSection = ({ id }) => {
                           ?.authorProfileImageUrl
                       }
                       sx={{ width: 52, height: 52 }}
+                      
                     />
                   </Link>
                   <CardContent sx={{ display: "block", marginTop: "-20px" }}>
